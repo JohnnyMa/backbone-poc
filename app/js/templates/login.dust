@@ -1,0 +1,6 @@
+<section>
+	<label>Username:</label><input name="username"></input>
+	<label>Password:</label><input name="pwd"></input>
+	<input id="login-btn" type="submit" name="login" value="Login"></button>
+	<input type="button" name="cancel" value="Cancel"></button>
+</section>

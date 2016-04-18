@@ -56,6 +56,38 @@ module.exports = function(grunt) {
 				}]
 			}
 		},
+		babel: {
+			options: {
+				sourceMap: true,
+				presets: ['babel-preset-es2015']
+			},
+			dist: {
+				files: [{
+					expand: true,
+					cwd: 'src/',
+					src: ['*.js'],
+					dest: 'dist/',
+					ext: '.js'
+				}]
+			}
+		},
+		// systemjs: {
+		// 	options: {
+		// 		sfx: true,
+		// 		baseURL: "./target",
+		// 		configFile: "./target/config.js",
+		// 		minify: true,
+		// 		build: {
+		// 			mangle: false
+		// 		}
+		// 	},
+		// 	dist: {
+		// 		files: [{
+		// 			"src": "./app/*/*.js",
+		// 			"dest": output_dir + "/js/app.min.js"
+		// 		}]
+		// 	}
+		// },
 		'uglify': {
 			login: {
 				options: {
@@ -77,35 +109,19 @@ module.exports = function(grunt) {
 				src: [vendor_js_dependencies, output_dir + 'js/common-complied-templates.js', 'app/js/**/*.js', 'app/js/main.js', 'app/js/app.js'],
 				dest: output_dir + 'portal.js'
 			}
-		},
-		systemjs: {
-			options: {
-				sfx: true,
-				baseURL: "./target",
-				configFile: "./target/config.js",
-				minify: true,
-				build: {
-					mangle: false
-				}
-			},
-			dist: {
-				files: [{
-					"src": "./app/js/*.js",
-					"dest": output_dir + "/js/app.min.js"
-				}]
-			}
 		}
 	});
 
 	// Load libs
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-dustjs');
+	grunt.loadNpmTasks('grunt-babel');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 
 	// load the task in the tasks dir, currently it's empty.
 	grunt.loadTasks('tasks');
 
-	grunt.registerTask('default', ['clean:prebuild', 'dustjs:common_tpl', 'copy:assets', 'copy:vendor', 'uglify:login', 'uglify:portal']);
+	grunt.registerTask('default', ['clean:prebuild', 'dustjs:common_tpl', 'babel', 'copy:assets', 'copy:vendor', 'uglify:login', 'uglify:portal']);
 
 }

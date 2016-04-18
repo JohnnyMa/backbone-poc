@@ -9,4 +9,4 @@ var UserItemView = Marionette.ItemView.extend({
 	}
 });
 
-export UserItemView;
+export default UserItemView;

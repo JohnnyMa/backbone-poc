@@ -38,21 +38,4 @@
 
 	app.start(options);
 	jma.app = app;
-
-
-
-	var userItemView = new UserItemView({
-		model: new Backbone.Model({
-			firstName: 'Sudipta',
-			lastName: 'Kundu'
-		})
-	});
-	$(document.body).append(userItemView.render().el);
-	// Close and destroy the view after 2 seconds
-	setTimeout(function() {
-		// userItemView.close();
-	}, 2000);
-
-
-
 })();

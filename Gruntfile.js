@@ -31,7 +31,7 @@ module.exports = function(grunt) {
 
 						// trim off any leading '_'
 						name = name.replace(/^_/, '');
-						name = 'poc_' + name;
+						name = 'tpl_poc_' + name;
 
 						return name;
 					}
@@ -56,21 +56,21 @@ module.exports = function(grunt) {
 				}]
 			}
 		},
-		babel: {
-			options: {
-				sourceMap: true,
-				presets: ['babel-preset-es2015']
-			},
-			dist: {
-				files: [{
-					expand: true,
-					cwd: 'src/',
-					src: ['*.js'],
-					dest: 'dist/',
-					ext: '.js'
-				}]
-			}
-		},
+		// babel: {
+		// 	options: {
+		// 		sourceMap: true,
+		// 		presets: ['babel-preset-es2015']
+		// 	},
+		// 	dist: {
+		// 		files: [{
+		// 			expand: true,
+		// 			cwd: 'src/',
+		// 			src: ['*.js'],
+		// 			dest: 'dist/',
+		// 			ext: '.js'
+		// 		}]
+		// 	}
+		// },
 		// systemjs: {
 		// 	options: {
 		// 		sfx: true,
@@ -122,6 +122,7 @@ module.exports = function(grunt) {
 	// load the task in the tasks dir, currently it's empty.
 	grunt.loadTasks('tasks');
 
-	grunt.registerTask('default', ['clean:prebuild', 'dustjs:common_tpl', 'babel', 'copy:assets', 'copy:vendor', 'uglify:login', 'uglify:portal']);
+	// grunt.registerTask('default', ['clean:prebuild', 'dustjs:common_tpl', 'babel', 'copy:assets', 'copy:vendor', 'uglify:login', 'uglify:portal']);
+	grunt.registerTask('default', ['clean:prebuild', 'dustjs:common_tpl', 'copy:assets', 'copy:vendor', 'uglify:login', 'uglify:portal']);
 
 }
